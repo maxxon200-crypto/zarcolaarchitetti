@@ -91,15 +91,15 @@ export const dictionaries: Record<Lang, Dict> = {
     },
     hero: {
       eyebrow: "Studio di architettura — Milano",
-      lineOne: "Tra la pietra",
-      lineTwoPre: "e il ",
-      accent: "segno",
+      lineOne: "Ogni pietra ha una storia da ",
+      lineTwoPre: "",
+      accent: "continuare",
       lineTwoPost: ".",
       descriptor:
         "Restauro e recupero di case storiche e cascine. Il progetto come dialogo paziente con la preesistenza.",
       ctaProjects: "Progetti",
       ctaContact: "Contatti",
-      credit: "Foto: Alessandro Saletta / DSL Studio",
+      credit: "",
       scroll: "Scorri",
     },
     manifesto: {
@@ -178,15 +178,15 @@ export const dictionaries: Record<Lang, Dict> = {
     },
     hero: {
       eyebrow: "Architecture studio — Milan",
-      lineOne: "Between the stone",
-      lineTwoPre: "and the drawn ",
-      accent: "line",
+      lineOne: "Every stone has a story to ",
+      lineTwoPre: "",
+      accent: "continue",
       lineTwoPost: ".",
       descriptor:
         "Restoration and recovery of historic houses and farmsteads. Design as a patient dialogue with what already stands.",
       ctaProjects: "Projects",
       ctaContact: "Contact",
-      credit: "Photo: Alessandro Saletta / DSL Studio",
+      credit: "",
       scroll: "Scroll",
     },
     manifesto: {

@@ -195,10 +195,10 @@ export const projects: Project[] = source.map((p) => ({
 }));
 
 export const heroImage = {
-  src: "/foto/hero-legno.jpg",
+  src: "/foto/troppe-colonne.jpg",
   width: 2048,
-  height: 1365,
-  blurDataURL: blurFor("/foto/hero-legno.jpg"),
+  height: 1335,
+  blurDataURL: blurFor("/foto/troppe-colonne.jpg"),
 };
 
 export function projectCopy(project: Project, lang: Lang): ProjectCopy {

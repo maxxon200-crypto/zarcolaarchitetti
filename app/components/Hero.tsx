@@ -16,7 +16,7 @@ export default function Hero() {
       {/* Full-bleed real project photograph */}
       <Image
         src={heroImage.src}
-        alt="Interno con schermatura in listelli di legno affacciata su una parete di cemento — dialogo tra intervento ligneo e preesistenza. Progetto Zarcola."
+        alt="Padiglione temporaneo in legno illuminato nella sera, tra gli alberi di un parco, con persone attorno — progetto di ricerca Zarcola, Troppe Colonne."
         fill
         priority
         sizes="100vw"
@@ -26,29 +26,38 @@ export default function Hero() {
         className="object-cover"
       />
 
-      {/* Legibility scrim — darker at the base for the headline, a touch at
-          the top for the navigation. */}
+      {/* Legibility scrim — strong at the base behind the headline and
+          subtitle, still dark through the middle (the night photograph keeps
+          its glow), with a darker top for the navigation. */}
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to top, rgba(26,26,24,0.74) 0%, rgba(26,26,24,0.42) 28%, rgba(26,26,24,0.10) 54%, rgba(26,26,24,0.06) 78%, rgba(26,26,24,0.30) 100%)",
+            "linear-gradient(to top, rgba(26,26,24,0.88) 0%, rgba(26,26,24,0.70) 32%, rgba(26,26,24,0.52) 58%, rgba(26,26,24,0.40) 78%, rgba(26,26,24,0.55) 100%)",
         }}
       />
 
       <div className="container-editorial relative z-10 pb-[clamp(3rem,8vh,6rem)] pt-28">
         <p className="eyebrow !text-paper/80">{t.hero.eyebrow}</p>
 
-        <h1 className="mt-6 max-w-[18ch] text-[clamp(2.75rem,8vw,6rem)] font-medium leading-[1.0] tracking-[-0.03em] text-paper">
+        <h1
+          className="mt-6 max-w-[15ch] text-[clamp(2.5rem,6.4vw,5.25rem)] font-medium leading-[1.04] tracking-[-0.03em] text-paper"
+          style={{
+            textShadow:
+              "0 1px 28px rgba(26,26,24,0.55), 0 2px 6px rgba(26,26,24,0.35)",
+          }}
+        >
           {t.hero.lineOne}
-          <br />
           {t.hero.lineTwoPre}
           <span style={{ color: "var(--accent)" }}>{t.hero.accent}</span>
           {t.hero.lineTwoPost}
         </h1>
 
-        <p className="mt-8 max-w-[46ch] text-[1.0625rem] leading-relaxed text-paper/85 md:text-[1.1875rem]">
+        <p
+          className="mt-8 max-w-[42ch] text-[1.25rem] leading-relaxed text-paper md:text-[1.5rem]"
+          style={{ textShadow: "0 1px 20px rgba(26,26,24,0.5)" }}
+        >
           {t.hero.descriptor}
         </p>
 
@@ -69,10 +78,6 @@ export default function Hero() {
           </button>
         </div>
       </div>
-
-      <span className="absolute bottom-4 right-[clamp(1.25rem,5vw,5rem)] z-10 text-[0.7rem] tracking-[0.08em] text-paper/55">
-        {t.hero.credit}
-      </span>
     </section>
   );
 }
