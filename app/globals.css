@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ *
+ * DESIGN TOKENS — the single source of truth.
+ * Off-white base, off-black text, warm greys. Exact hex, never
+ * generic descriptors. The architecture photography carries the colour.
+ * ------------------------------------------------------------------ */
+:root {
+  /* Full-value tokens — used directly in hand-written CSS. */
+  --paper: #f5f4f2; /* base */
+  --bone: #eae8e3; /* surfaces */
+  --ink: #1a1a18; /* off-black text */
+  --stone: #6e6a63; /* muted labels */
+  --line: #d8d5cf; /* hairlines */
+  --accent: #7c6a58; /* warm taupe — used sparingly */
+
+  /* Channel tokens (R G B) — let Tailwind apply the /opacity modifier. */
+  --paper-rgb: 245 244 242;
+  --bone-rgb: 234 232 227;
+  --ink-rgb: 26 26 24;
+  --stone-rgb: 110 106 99;
+  --line-rgb: 216 213 207;
+  --accent-rgb: 124 106 88;
+
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ------------------------------------------------------------------ *
+ * BASE
+ * ------------------------------------------------------------------ */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  /* Lenis is enabled from JS; when it runs it manages scrolling itself. */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: clip;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: 1.125rem; /* 18px body — comfortably legible */
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern", "liga", "calt";
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  ::placeholder {
+    color: var(--stone);
+    opacity: 1;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * COMPONENT PRIMITIVES
+ * ------------------------------------------------------------------ */
+@layer components {
+  .container-editorial {
+    width: 100%;
+    max-width: 88rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 5rem);
+  }
+
+  /* Small labels: min ~13px, tracked, and dark enough to read. */
+  .eyebrow {
+    font-size: 0.8125rem; /* 13px */
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  @media (min-width: 768px) {
+    .eyebrow {
+      font-size: 0.875rem; /* 14px */
+    }
+  }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
+    padding-bottom: 0.08em;
+    transition: background-size 0.5s var(--ease-editorial);
+  }
+  .link-underline:hover {
+    background-size: 0 1px;
+  }
+
+  /* Reverse: reveal underline on hover (for large plain links). */
+  .link-grow {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 1px;
+    padding-bottom: 0.08em;
+    transition: background-size 0.5s var(--ease-editorial);
+  }
+  .link-grow:hover,
+  .link-grow:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 3.25rem;
+    padding-inline: 1.75rem;
+    font-size: 0.9375rem; /* 15px — obvious, legible */
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition:
+      background-color 0.4s var(--ease-editorial),
+      color 0.4s var(--ease-editorial),
+      border-color 0.4s var(--ease-editorial),
+      transform 0.4s var(--ease-editorial);
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn-solid {
+    background-color: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .btn-solid:hover {
+    background-color: transparent;
+    color: var(--ink);
+  }
+  .btn-outline {
+    background-color: transparent;
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+  .btn-outline:hover {
+    background-color: var(--ink);
+    color: var(--paper);
+  }
+  /* Hero buttons sit on photography with a paper-toned outline. */
+  .btn-on-photo-solid {
+    background-color: var(--paper);
+    color: var(--ink);
+    border-color: var(--paper);
+  }
+  .btn-on-photo-solid:hover {
+    background-color: transparent;
+    color: var(--paper);
+    border-color: var(--paper);
+  }
+  .btn-on-photo-outline {
+    background-color: transparent;
+    color: var(--paper);
+    border-color: rgba(245, 244, 242, 0.7);
+  }
+  .btn-on-photo-outline:hover {
+    background-color: var(--paper);
+    color: var(--ink);
+    border-color: var(--paper);
+  }
+
+  .field {
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 0.75rem 0;
+    font-size: 1.0625rem; /* 17px */
+    color: var(--ink);
+    transition: border-color 0.4s var(--ease-editorial);
+  }
+  .field:hover {
+    border-color: var(--stone);
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--ink);
+  }
+  textarea.field {
+    resize: vertical;
+    min-height: 8rem;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * MOTION — content is VISIBLE BY DEFAULT.
+ * The inline head script adds `reveal-armed` to <html> ONLY when JS is on
+ * AND prefers-reduced-motion is not set. GSAP then animates each block in.
+ * With JS off, reduced motion, or a failed script, nothing is hidden.
+ * ------------------------------------------------------------------ */
+html.reveal-armed [data-reveal] {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  html.reveal-armed [data-reveal] {
+    opacity: 1 !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
